@@ -23,7 +23,7 @@ bot.onText(/\/hf (.+)/, (msg, match) => {
     bot.sendMessage(chatId, resp, { parse_mode: "Markdown" });
   } else if (message.match(/about/i)) {
     const resp =
-      "*Info*\n_Bot Exclusivo para *HackFun*_\n🔗-*Repositorio*: \n⚠-*Issues*:\n💻-*Creado con*: NodeJs\n🦾-*Motivación*: Pequeños objetivos cumplidos.";
+      "*Info*\n_Bot Exclusivo para *HackFun*_\n🔗-*Repositorio*: [Github](https://github.com/alepiumetti/hackfun-rosario) \n⚠-*Issues*:[GitHub](https://github.com/alepiumetti/hackfun-rosario/issues)\n💻-*Creado con*: NodeJs\n🦾-*Motivación*: Pequeños objetivos cumplidos.";
     bot.sendMessage(chatId, resp, { parse_mode: "Markdown" });
   } else if (message.match(/redes/i)) {
     const resp =
