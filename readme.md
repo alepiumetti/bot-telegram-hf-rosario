@@ -29,10 +29,10 @@ Podés dejar un [issue]() y/o pull request para las modificaciones.
 
 ## To-Do
 
- [x] Crear Bot.
- [x] Subir Repositorio.  
- [ ] Deploy en servidor.
- [ ] Sumarlo al servidor de Telegram y testearlo.
+ - [x] ~~Crear Bot~~.
+ - [x] ~~Subir Repositorio~~.  
+ - [ ] Deploy en servidor.
+ - [ ] Sumarlo al servidor de Telegram y testearlo.
 
 ## Motivación
 
