@@ -15,7 +15,8 @@ Todo lo que fue utilizado para el bot.
 #### Dependencias externas
 
 [Node.js Telegram Bot API](https://github.com/yagop/node-telegram-bot-api);
-#3## Versiones utlilizadas 
+
+### Versiones utlilizadas 
 
 ```
 npm 7.13.0
