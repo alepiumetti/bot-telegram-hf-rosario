@@ -32,8 +32,8 @@ Podés dejar un [issue]() y/o pull request para las modificaciones.
 
  - [x] ~~Crear Bot~~.
  - [x] ~~Subir Repositorio~~.  
- - [ ] Deploy en servidor.
- - [ ] Sumarlo al servidor de Telegram y testearlo.
+ - [x] Deploy en servidor.
+ - [x] Sumarlo al servidor de Telegram y testearlo.
  - [ ] Crear template para nuevos servidores
 
 ## Motivación

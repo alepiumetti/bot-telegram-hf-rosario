@@ -11,12 +11,14 @@ bot.onText(/\/hf (.+)/, (msg, match) => {
   const user = msg.from;
   const message = match[1];
 
+  console.log(match);
+
   if (message.match(/hola/i)) {
     const resp = "Hola " + user.first_name;
     bot.sendMessage(chatId, resp);
   } else if (message.match(/ayuda/i)) {
     const resp =
-      "Comandos disponibles:\n• *ayuda* : Muestra todos los comandos \n• *hola* : Saludito.\n• *redes*:Todas los medios de contacto de HackFun \n\n • *about*: Info importante sobre bot ";
+      "Comandos disponibles:.\n• /hf *links* : Hashtags relevantes del servidor \n• /hf *ayuda* : Muestra todos los comandos \n• /hf *hola* : Saludito.\n• /hf *redes*:Todas los medios de contacto de HackFun \n• /hf *about*: Info importante sobre bot ";
     bot.sendMessage(chatId, resp, { parse_mode: "Markdown" });
   } else if (message.match(/links/i)) {
     const resp = "Importantes:\n*#Links*: links útiles.\n";
