@@ -1,5 +1,6 @@
 const TelegramBot = require("node-telegram-bot-api");
 const token = require("./token");
+const commands = require("./commands/commands");
 
 const bot = new TelegramBot(token, { polling: true });
 
@@ -9,28 +10,17 @@ bot.onText(/\/hf (.+)/, (msg, match) => {
   // of the message
   const chatId = msg.chat.id;
   const user = msg.from;
-  const message = match[1];
+  const message = match[1].toLowerCase();
 
-  console.log(match);
+  const cmd = commands(user);
 
-  if (message.match(/hola/i)) {
-    const resp = "Hola " + user.first_name;
-    bot.sendMessage(chatId, resp);
-  } else if (message.match(/ayuda/i)) {
-    const resp =
-      "Comandos disponibles:.\n• /hf *links* : Hashtags relevantes del servidor \n• /hf *ayuda* : Muestra todos los comandos \n• /hf *hola* : Saludito.\n• /hf *redes*:Todas los medios de contacto de HackFun \n• /hf *about*: Info importante sobre bot ";
-    bot.sendMessage(chatId, resp, { parse_mode: "Markdown" });
-  } else if (message.match(/links/i)) {
-    const resp = "Importantes:\n*#Links*: links útiles.\n";
-    bot.sendMessage(chatId, resp, { parse_mode: "Markdown" });
-  } else if (message.match(/about/i)) {
-    const resp =
-      "*Info*\n_Bot Exclusivo para *HackFun*_\n🔗-*Repositorio*: [Github](https://github.com/alepiumetti/hackfun-rosario) \n⚠-*Issues*:[GitHub](https://github.com/alepiumetti/hackfun-rosario/issues)\n💻-*Creado con*: NodeJs\n🦾-*Motivación*: Pequeños objetivos cumplidos.";
-    bot.sendMessage(chatId, resp, { parse_mode: "Markdown" });
-  } else if (message.match(/redes/i)) {
-    const resp =
-      "Redes de *HackFun*\n🔗-[Página Web](https://hackfunrosario.com/) \n📷-Instagram: [@hackfunrosario](https://www.instagram.com/hackfunrosario/) \n🕊-Twitter: [@hackfun_ros](https://twitter.com/hackfun_ros)";
-    bot.sendMessage(chatId, resp, { parse_mode: "Markdown" });
+  // console.log(cmd.hasOwnProperty(match[1]));
+  // si querés saber si te está tomando el comando podés usar este log.
+
+  if (cmd[message]) {
+    const resp = bot.sendMessage(chatId, cmd[message].content, {
+      parse_mode: "Markdown",
+    });
   } else {
     bot.sendMessage(chatId, "No existe este comando");
   }
