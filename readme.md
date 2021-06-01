@@ -24,7 +24,7 @@ node v16.2.0
 ```
 ## Servidor
 
-_En proceso de deploy_
+Deploy hecho en Digital Ocean
 ### Agregar o modificar
 Podés dejar un [issue]() y/o pull request para las modificaciones.
 
@@ -32,8 +32,8 @@ Podés dejar un [issue]() y/o pull request para las modificaciones.
 
  - [x] ~~Crear Bot~~.
  - [x] ~~Subir Repositorio~~.  
- - [x] Deploy en servidor.
- - [x] Sumarlo al servidor de Telegram y testearlo.
+ - [x] ~~Deploy en servidor.~~
+ - [x] ~~Sumarlo al servidor de Telegram y testearlo.~~
  - [ ] Crear template para nuevos servidores
 
 ## Motivación
