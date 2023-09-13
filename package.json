@@ -1,14 +1,15 @@
 {
   "dependencies": {
+    "mqtt": "^5.0.4",
     "node-telegram-bot-api": "^0.53.0"
   },
   "name": "hf-bot",
   "version": "1.0.0",
   "description": "Bot para mostrar comandos en HackFun Rosario",
   "main": "index_hf.js",
-  "devDependencies": {},
   "scripts": {
     "start": "node ./src/index_hf.js",
+    "dev": "nodemon ./src/index_hf.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

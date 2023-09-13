@@ -1,4 +1,8 @@
-const commands = (user) => {
+const status = (context) => {
+  context.client.publish("door/trigger", JSON.stringify({ door: "reScan" }));
+};
+
+const commands = (context) => {
   return {
     hola: {
       content: "Hola " + user.first_name,
@@ -18,7 +22,10 @@ const commands = (user) => {
       content:
         "Redes de *HackFun*\n🔗-[Página Web](https://hackfunrosario.com/) \n📷-Instagram: [@hackfunrosario](https://www.instagram.com/hackfunrosario/) \n🕊-Twitter: [@hackfun_ros](https://twitter.com/hackfun_ros)",
     },
+    status: {
+      content: "apretado status",
+    },
   };
 };
 
-module.exports = commands;
+module.exports = { status };
