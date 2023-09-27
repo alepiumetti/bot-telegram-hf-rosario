@@ -2,6 +2,7 @@ const status = (context) => {
   context.client.publish("door/trigger", JSON.stringify({ door: "reScan" }));
 };
 
+const encuesta = (context) => {};
 const commands = (context) => {
   return {
     hola: {
@@ -28,4 +29,4 @@ const commands = (context) => {
   };
 };
 
-module.exports = { status };
+module.exports = { status, encuesta };

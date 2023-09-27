@@ -1,9 +1,11 @@
 const TelegramBot = require("node-telegram-bot-api");
+const CronJob = require("cron").CronJob;
+
 const mqtt = require("mqtt");
 
-const client = mqtt.connect("mqtt://149.50.131.173:1883");
+const { token, url_mqtt } = require("./config.json");
 
-const token = "1857846651:AAFqnYhoQw_Z21BOyN84mX7KowSyf5Fe-f0";
+const client = mqtt.connect(url_mqtt);
 const commands = require("./commands/commands");
 
 const bot = new TelegramBot(token, { polling: true });
@@ -44,42 +46,41 @@ client.on("message", (topic, message) => {
   // client.end();
 });
 
-bot.onText(/\/hf (.+)/, (msg, match) => {
+bot.onText(/\/hf(.+)/, (msg, match) => {
   const chatId = msg.chat.id;
   const user = msg.from;
-  const message = match[1].toLowerCase();
+  const message = match[1].trim().toLowerCase();
 
-  console.log("chatId", chatId);
+  if (message === "hola") {
+    bot.sendMessage(chatId, `Hola ${user.username}!`);
+  }
 
-  try {
-    commands[message]({
-      bot,
-      chatId,
-      client,
-      user,
-    });
-  } catch (error) {
-    bot.sendMessage(chatId, "No existe este comando");
+  if (message === "1+1") {
+    bot.sendMessage(chatId, "11");
   }
 });
 
-bot.onText(/\/start/, function (msg) {
-  var chatId = msg.chat.id;
-  var chatitle = msg.chat.title;
+// bot.onText(/\/encuesta/, async function (msg) {
+//   const chatId = msg.chat.id;
+//   console.log("msg", msg);
+// });
 
-  bot.sendMessage(chatId, `Hola ${msg.from.first_name}! \n `, {
-    reply_markup: {
-      inline_keyboard: [
-        [
-          { text: "⚙️ Ayuda", callback_data: "botonAyuda" },
-          { text: "Estado puerta", callback_data: "status" },
-          // { text: "🐶 Sobre Apolo", callback_data: "botonSobre" },
-        ],
-      ],
-    },
-    parse_mode: "Markdown",
-  });
-});
+const CRON_JOB = new CronJob(
+  "0 8 * * wed",
+  async function () {
+    await bot.sendPoll(
+      -1001530056510,
+      `-ENCUESTA DE PRUEBA- Vas a la toma? `,
+      ["Si", "Tal vez", "No"],
+      {
+        is_anonymous: false,
+      }
+    );
+  },
+  null,
+  true,
+  "America/Los_Angeles"
+);
 
 bot.on("callback_query", function onCallbackQuery(actionButton) {
   const data = actionButton.data;

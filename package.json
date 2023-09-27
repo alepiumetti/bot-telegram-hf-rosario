@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "cron": "^2.4.4",
     "mqtt": "^5.0.4",
     "node-telegram-bot-api": "^0.53.0"
   },
